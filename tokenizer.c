@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * tokenizer - tokinaze the line.
+ * @line: variable of type string.
+ * Return: char.
+ */
+
 char **tokenizer(char *line)
 {
 	char *token = NULL, *tmp = NULL;
@@ -7,9 +13,15 @@ char **tokenizer(char *line)
 	int cpt = 0, i = 0;
 
 	if (!line)
-		return(NULL);
+		return (NULL);
 	tmp = _strdup(line);
 	token = strtok(tmp, DELIM);
+	if (token == NULL)
+	{
+		free(line), line = NULL;
+		free(tmp), tmp = NULL;
+		return (NULL);
+	}
 	while (token)
 	{
 		cpt++;
@@ -27,7 +39,7 @@ char **tokenizer(char *line)
 	token = strtok(line, DELIM);
 	while (token)
 	{
-		command[i] = token;
+		command[i] = strdup(token);
 		token = strtok(NULL, DELIM);
 		i++;
 	}
