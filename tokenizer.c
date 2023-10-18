@@ -32,14 +32,14 @@ char **tokenizer(char *line)
 	command = malloc(sizeof(char *) * (cpt + 1));
 	if (!command)
 	{
-		free(line);
+		free(line), line = NULL;
 		return (NULL);
 	}
 
 	token = strtok(line, DELIM);
 	while (token)
 	{
-		command[i] = strdup(token);
+		command[i] = _strdup(token);
 		token = strtok(NULL, DELIM);
 		i++;
 	}

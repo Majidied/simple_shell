@@ -12,6 +12,11 @@
 
 #define DELIM " \t\n"
 
+extern char **environ;
+
+int _execute(char **command, char **argv);
+void freecmd(char **arr);
+
 char *read_line(void);
 char **tokenizer(char *line);
 
