@@ -69,3 +69,38 @@ void print_error(char *name, char *cmd, int idx)
 	write(STDERR_FILENO, cmd, _strlen(cmd));
 	write(STDERR_FILENO, mssg, _strlen(mssg));
 }
+
+/**
+ * is_positive_number - .........
+ * @str: ..............
+ * Return: integer.
+ */
+int is_positive_number(char *str)
+{
+	int i;
+
+	if (!str)
+		return (0);
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+	}
+	return (1);
+}
+/**
+ * _atoi - .........
+ * @str: ..............
+ * Return: integer.
+ */
+int _atoi(char *str)
+{
+	int i, num = 0;
+
+	for (i = 0; str[i]; i++)
+	{
+		num *= 10;
+		num *= (str[i] - '0');
+	}
+	return (num);
+}
