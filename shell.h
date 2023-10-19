@@ -14,7 +14,7 @@
 
 extern char **environ;
 
-int _execute(char **command, char **argv);
+int _execute(char **command, char **argv, int idx);
 void freecmd(char **arr);
 
 char *read_line(void);
@@ -25,5 +25,12 @@ int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
+
+char *_getenv(char *var);
+char *_getpath(char *command);
+
+char *_itoa(int n);
+void reverse_string(char *str, int len);
+void print_error(char *name, char *cmd, int idx);
 
 #endif
