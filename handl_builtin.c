@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * is_buitin - .....
+ * is_builtin - .....
  * @command: ....
  * Return: integer.
  */
@@ -31,13 +31,15 @@ void handle_builtin(char **command, char **argv, int *status, int idx)
 
 	if (_strcmp(command[0], "exit") == 0)
 		exit_shell(command, argv, status, idx);
-	else if (_strcmp(command[0],"env") == 0)
+	else if (_strcmp(command[0], "env") == 0)
 		print_env(command, status);
 }
 
 /**
  * exit_shell - ...........
  * @command: ..........
+ * @argv:.......
+ * @idx:.....
  * @status: ...........
  * Return: Nothing.
  */
@@ -46,6 +48,7 @@ void exit_shell(char **command, char **argv, int *status, int idx)
 {
 	int exit_value = (*status);
 	char *index, mssg[] = ": exit: Illegal number: ";
+
 	if (command[1])
 	{
 		if (is_positive_number(command[1]))
