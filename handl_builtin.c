@@ -26,7 +26,7 @@ int is_builtin(char *command)
  * @idx: ..............
  * Return: Nothing.
  */
-void handle_builtin(char **command, char **argv, int status, int idx)
+void handle_builtin(char **command, char **argv, int *status, int idx)
 {
 	(void) argv;
 	(void) idx;
@@ -44,10 +44,10 @@ void handle_builtin(char **command, char **argv, int status, int idx)
  * Return: Nothing.
  */
 
-void exit_shell(char **command, int status)
+void exit_shell(char **command, int *status)
 {
 	freecmd(command);
-	exit(status);
+	exit(*status);
 }
 /**
  * print_env - ...........
@@ -55,10 +55,9 @@ void exit_shell(char **command, int status)
  * @status: ...........
  * Return: Nothing.
  */
-void print_env(char **command, int status)
+void print_env(char **command, int *status)
 {
 	int i;
-	(void) status;
 
 	for (i = 0; environ[i]; i++)
 	{
@@ -66,4 +65,5 @@ void print_env(char **command, int status)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	freecmd(command);
+	*status = 0;
 }

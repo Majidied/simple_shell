@@ -33,9 +33,9 @@ char *_itoa(int n);
 void reverse_string(char *str, int len);
 void print_error(char *name, char *cmd, int idx);
 
-void handle_builtin(char **command, char **argv, int status, int idx);
+void handle_builtin(char **command, char **argv, int *status, int idx);
 int is_builtin(char *command);
-void exit_shell(char **command, int status);
-void print_env(char **command, int status);
+void exit_shell(char **command, int *status);
+void print_env(char **command, int *status);
 
 #endif
