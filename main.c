@@ -2,8 +2,8 @@
 
 /**
  * main - simple shell fonction
- * @ac: count of arguments
- * @av: arguments
+ * @ac: count of arguments.
+ * @argv: arguments.
  * Return: 0 always.
  */
 
