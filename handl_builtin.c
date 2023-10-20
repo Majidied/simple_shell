@@ -89,5 +89,5 @@ void print_env(char **command, int *status)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	freecmd(command);
-	*status = 0;
+	(*status) = 0;
 }
