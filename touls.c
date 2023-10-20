@@ -68,6 +68,7 @@ void print_error(char *name, char *cmd, int idx)
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, cmd, _strlen(cmd));
 	write(STDERR_FILENO, mssg, _strlen(mssg));
+	free(index);
 }
 
 /**
