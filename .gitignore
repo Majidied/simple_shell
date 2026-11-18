@@ -1,0 +1,8 @@
+hsh
+*.o
+*.out
+a.out
+.vscode/
+.idea/
+.DS_Store
+REPO_AUDIT.md

@@ -1,0 +1,30 @@
+name: C Build & Smoke Test
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile with strict ALX flags
+        run: gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+      - name: Verify Makefile rebuild
+        run: make re
+
+      - name: Run non-interactive smoke test
+        run: |
+          output=$(printf "/bin/echo hello_simple_shell\npwd\nexit\n" | ./hsh)
+          echo "$output"
+          echo "$output" | grep -q "hello_simple_shell"
+
+      - name: Install Valgrind and check for memory leaks
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq valgrind
+          printf "/bin/ls\npwd\nenv\nexit 0\n" | valgrind --leak-check=full --error-exitcode=1 ./hsh
